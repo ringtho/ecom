@@ -9,6 +9,7 @@ import ItemDetails from "./pages/itemDetails/ItemDetails";
 import Checkout from "./pages/checkout/Checkout";
 import Confirmation from "./pages/checkout/Confirmation";
 import Navbar from "./pages/global/Navbar";
+import CartMenu from "./pages/global/CartMenu";
 
 
 const ScrollToTop = () => {
@@ -24,7 +25,7 @@ const ScrollToTop = () => {
 function App() {
   return (
     <BrowserRouter>
-    <Navbar />
+      <Navbar />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -32,6 +33,7 @@ function App() {
         <Route path="checkout" element={<Checkout />} />
         <Route path="checkout/success" element={<Confirmation />} />
       </Routes>
+      <CartMenu />
     </BrowserRouter>
   );
 }

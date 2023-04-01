@@ -9,11 +9,13 @@ import {
 } from "@mui/icons-material"
 import { useNavigate } from "react-router-dom"
 import { shades } from "../../theme"
+import { setIsCartOpen } from "../../redux"
 
 function Navbar(){
     const navigate = useNavigate()
-    // const dispatch = useDispatch()
-    // const data = useSelector(state => state)
+    const dispatch = useDispatch()
+    const {cart, isCartOpen} = useSelector(state => state.cart)
+    console.log(isCartOpen)
     return (
         <Box
             display="flex"
@@ -53,9 +55,26 @@ function Navbar(){
                     <IconButton>
                         <PersonOutlined sx={{ color: "black"}} />
                     </IconButton>
+                    <Badge
+                        badgeContent={cart.length}
+                        color="secondary"
+                        invisible={cart.length === 0}  
+                        sx={{
+                           " & .MuiBadge-badge" : {
+                            right: 5,
+                            top: 5,
+                            padding: "0 4px",
+                            height: "14px",
+                            minWidth: "13px"
+                           },
+                        }}  
+                    >
                     <IconButton>
-                        <ShoppingBagOutlined sx={{ color: "black"}} />
+                        <ShoppingBagOutlined
+                        onClick={()=> dispatch(setIsCartOpen({}))}
+                        sx={{ color: "black"}} />
                     </IconButton>
+                    </Badge>
                     <IconButton>
                         <MenuOutlined sx={{ color: "black"}} />
                     </IconButton>
