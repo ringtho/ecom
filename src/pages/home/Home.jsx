@@ -1,7 +1,11 @@
+import MainCarousel from "./MainCarousel"
+
 
 function Home(){
     return (
-        <div>Home Page</div>
+        <div className="home">
+            <MainCarousel />
+        </div>
     )
 }
 
